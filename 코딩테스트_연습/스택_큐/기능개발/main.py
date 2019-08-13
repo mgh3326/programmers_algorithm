@@ -20,7 +20,7 @@ def solution(progresses: list, speeds: list):
                 answer.append(count)
                 break
         if index == len(temp_list) - 1:
-            answer.append(count-1)
+            answer.append(count - 1)
             break
 
     return answer
@@ -28,14 +28,20 @@ def solution(progresses: list, speeds: list):
 
 progresses_list = [
     [93, 30, 55],
+    [93, 93, 55],
+    [30, 93, 55],
 
 ]
 speeds_list = [
-    [1, 30, 5]
+    [1, 30, 5],
+    [1, 1, 5],
+    [30, 1, 5],
 
 ]
 return_list = [
-    [2, 1]
+    [2, 1],
+    [2, 1],
+    [1, 1, 1],
 
 ]
 for _p, _s, r in zip(progresses_list, speeds_list, return_list):

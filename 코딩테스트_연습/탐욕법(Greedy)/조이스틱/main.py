@@ -17,22 +17,19 @@ def solution(name: str):
                 my_list.append(True)  # 끝
             else:
                 if idx == 0:
-                    my_list.append(True)  # 끝
+                    pass
                 else:
                     my_list.append(False)  # 가야되는거
                     index_list.append(idx)
-        current_index = 0
-        answer1 = 0
-        for index in index_list:
-            answer1 += index - current_index
-            current_index = index
-        answer2 = 1
-        current_index = len(name) - 1
+        if len(index_list) != 0:
+            if len(index_list) == 1:
+                answer1 = index_list[0]
+                answer2 = len(name) - index_list[0]
 
-        for index in reversed(index_list):
-            answer2 += (index - current_index)
-            current_index = index
-        answer += min(answer1, answer2)
+            else:
+                answer1 = index_list[-1]
+                answer2 = len(name) - index_list[0]
+            answer += min(answer1, answer2)
     else:
         answer += len(name) - 1
 
@@ -40,12 +37,14 @@ def solution(name: str):
 
 
 board_list = [
-    "JAN",
-    "AAA"
+    # "JAN",
+    "BAAA",
+    "ABABAAAAAAABA"
 
 ]
 return_list = [
-    23, 0
+    # 23,
+    1, 4
 
 ]
 for _input_data in zip(board_list, return_list):

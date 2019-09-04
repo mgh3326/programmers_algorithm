@@ -4,7 +4,6 @@ import heapq
 # TODO 스택을 이용하면 아주 효율적으로 문제를 풀수 있다.
 def solution(number, k):
     answer = ''
-    stack = [number[0]]
     number_str = str(number)
     my_number_list = list(number_str)
 

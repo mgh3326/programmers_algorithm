@@ -14,16 +14,16 @@ def solution(n, edge):
         edge_dict[end].append(start)
     status_list[0] = 0
     # BFS
-    temp_list = [[0, edge_dict[0]]]
+    temp_list = [0]
     while True:
         if len(temp_list) == 0:
             break
-        start, end_list = temp_list.pop(0)
+        start = temp_list.pop(0)
+        end_list = edge_dict[start]
         for end in end_list:
             if status_list[end] == -1:
                 status_list[end] = status_list[start] + 1
-                pop_ = edge_dict[end]
-                temp_list.append([end, pop_])
+                temp_list.append(end)
     answer = status_list.count(max(status_list))
     return answer
 

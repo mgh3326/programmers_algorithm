@@ -1,23 +1,26 @@
-def to_binaray_number(input_number, n):
-    binaray_list = [' '] * n
-    for i in range(n):
+def to_binary_number_str(input_number, n):
+    binary_str = ''
+    for n_idx in range(n):
         if input_number == 0:
             break
         number_n = input_number % 2
         input_number = input_number // 2
-        if number_n==1:
-            binaray_list[n - i - 1] = "#"
-
-    return binaray_list
+        if number_n == 1:
+            binary_str = "#" + binary_str
+        else:
+            binary_str = " " + binary_str
+    for n_idx in range(len(binary_str), n):
+        binary_str = " " + binary_str
+    return binary_str
 
 
 def solution(n, arr1, arr2):
     answer = []
-    for i in range(n):
-        i_ = arr1[i] | arr2[i]
-        number = to_binaray_number(i_, n)
-        answer.append(''.join(number))
+    for n_idx in range(n):
+        or_number = arr1[n_idx] | arr2[n_idx]
         # 2진수로 변경해줘야겠다.
+        binary_number_str = to_binary_number_str(or_number, n)
+        answer.append(binary_number_str)
     return answer
 
 

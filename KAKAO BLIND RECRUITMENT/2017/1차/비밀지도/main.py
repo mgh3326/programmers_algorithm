@@ -17,7 +17,6 @@ def to_binary(input_n, n):
     return binary_list
 
 
-# TODO 레퍼런스 코드를 한번 참고해보는것도 좋을것 같다 (카카오 블로그에서도 비트 연산을 잘 활용하는지가 출제 의도였다고 한다)
 def solution(n, arr1, arr2):
     answer = []
     for i in range(n):

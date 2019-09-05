@@ -1,4 +1,3 @@
-# TODO 레퍼런스 코드처럼 10을 k로 바꿔주면 편하겠다
 def solution(dartResult):
     classification_list = ["S", "D", "T"]
     value_list = [0, 0, 0]

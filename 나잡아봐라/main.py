@@ -1,4 +1,5 @@
 # bfs를 이용하여, 모든 경우를 생각하여 풀었다. BFS를 사용하되, DP도 같이 사용하면 효율이 올라갈듯 하다.
+# TODO 단순 BFS
 def solution(c, b):  # 코니 위치, 브라운 위치
     brown_speed_list = [-1, 1, 0]
     result = -1
@@ -18,13 +19,13 @@ def solution(c, b):  # 코니 위치, 브라운 위치
         brown_position, cony_position, cony_speed, depth = queue.pop(0)
         # bfs로 짜고 queue에 브라운 위치, 코니 위치, 코니 속도 이렇게 넣어주면 될 듯하다.
         for brown_speed in brown_speed_list:
+            next_cony_position = (cony_position + cony_speed)
             if brown_speed == 0:
                 next_brown_position = brown_position * 2
             else:
                 next_brown_position = brown_position + brown_speed
             if next_brown_position > position_max or next_brown_position < 0:
                 continue
-            next_cony_position = (cony_position + cony_speed)
             if next_brown_position == next_cony_position:
                 result = depth + 1
                 break
@@ -38,6 +39,21 @@ def solution(c, b):  # 코니 위치, 브라운 위치
 
 
 print(
+    solution(11, 2)
+)
+# 5
+
+print(
+    solution(11, 1)
+)
+# 6
+
+print(
     solution(6, 3)
 )
+# 4
+
+# print(
+#     solution(100000, 3)
+# )
 # 5

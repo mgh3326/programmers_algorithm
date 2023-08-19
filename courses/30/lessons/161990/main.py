@@ -1,15 +1,4 @@
 def solution(wallpaper):
-    file_positions = []
-    for i in range(len(wallpaper)):
-        string = wallpaper[i]
-        for j in range(len(string)):
-            char = string[j]
-            if char == "#":
-                file_positions.append([i, j])
-    first_elements = [x[0] for x in file_positions]
-    second_elements = [x[1] for x in file_positions]
-    min_h = min(first_elements)
-    max_h = max(first_elements)
-    min_w = min(second_elements)
-    max_w = max(second_elements)
-    return [min_h, min_w, max_h + 1, max_w + 1]
+    file_positions = [[i, j] for i, row in enumerate(wallpaper) for j, char in enumerate(row) if char == "#"]
+    first_elements, second_elements = zip(*file_positions)
+    return [min(first_elements), min(second_elements), max(first_elements) + 1, max(second_elements) + 1]

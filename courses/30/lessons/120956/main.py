@@ -1,16 +1,12 @@
 def is_composite_number(n):
-    count = 0
-    for i in range(n - 1):
-        if n % (i + 1) == 0:
-            count += 1
-            if count >= 2:
-                return True
+    if n < 2:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return True
     return False
 
 
 def solution(n):
-    answer = 0
-    for i in range(n):
-        if is_composite_number(i + 1):
-            answer += 1
+    answer = sum(is_composite_number(i + 1) for i in range(n))
     return answer

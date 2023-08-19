@@ -2,10 +2,10 @@ import main
 
 
 def test_solution1():
-    result = main.solution(["aya", "yee", "u", "maa", "wyeoo"])
-    assert result == 1
+    result = main.solution(10)
+    assert result == 5
 
 
 def test_solution2():
-    result = main.solution(["ayaye", "uuuma", "ye", "yemawoo", "ayaa"])
-    assert result == 3
+    result = main.solution(15)
+    assert result == 8

@@ -1,22 +1,12 @@
 def solution(survey, choices):
-    user_personality_names = ["RT",
-                              "CF",
-                              "JM",
-                              "AN"]
-    user_personality_scores = [0, 0, 0, 0]
+    user_personalities = {"RT": 0, "CF": 0, "JM": 0, "AN": 0}
     scores = [-3, -2, -1, 0, 1, 2, 3]
-    for i, value in enumerate(survey):
-        sorted_value = "".join(sorted(value))
-        personality_index = user_personality_names.index(sorted_value)
-        direction = 1
-        if value != sorted_value:
-            direction = -1
-        choice = choices[i]
-        user_personality_scores[personality_index] += scores[choice - 1] * direction
-    answer = ''
-    for i, user_personality_name in enumerate(user_personality_names):
-        if user_personality_scores[i] <= 0:
-            answer += user_personality_name[0]
-        else:
-            answer += user_personality_name[1]
-    return answer
+
+    for survey_value, choice in zip(survey, choices):
+        sorted_value = "".join(sorted(survey_value))
+        score_direction = -1 if survey_value != sorted_value else 1
+        chosen_score = scores[choice - 1] * score_direction
+        user_personalities[sorted_value] += chosen_score
+
+    answer = [name[0] if score <= 0 else name[1] for name, score in user_personalities.items()]
+    return "".join(answer)

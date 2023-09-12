@@ -1,25 +1,21 @@
 def solution(n):
-    arr = []
-    for i in range(n):
-        arr.append([0] * (i + 1))
+    arr = [[0] * (i + 1) for i in range(n)]
 
-    def triangle(h, w, triangle_size, current_num):
-        if triangle_size == 1:
-            arr[h][w] = current_num
+    def fill_triangle(h, w, triangle_size, current_num):
+        if triangle_size < 1:
             return
-        for i in range(triangle_size):
+        for i in range(triangle_size):  # Go downwards
             arr[h + i][w] = current_num
             current_num += 1
-        for i in range(triangle_size - 1):
-            arr[h + triangle_size - 1][w + i + 1] = current_num
+        for i in range(1, triangle_size):  # Go rightwards
+            arr[h + triangle_size - 1][w + i] = current_num
             current_num += 1
-        for i in range(triangle_size - 2):
-            arr[h + triangle_size - 1 - (i + 1)][w + triangle_size - 1 - (i + 1)] = current_num
+        for i in range(1, triangle_size - 1):  # Go upwards
+            arr[h + triangle_size - 1 - i][w + triangle_size - 1 - i] = current_num
             current_num += 1
-        if triangle_size - 3 >= 1:
-            triangle(h + 2, w + 1, triangle_size - 3, current_num)
+        fill_triangle(h + 2, w + 1, triangle_size - 3, current_num)
 
-    triangle(0, 0, n, 1)
+    fill_triangle(0, 0, n, 1)
     answer = []
     for i in range(n):
         for v in arr[i]:

@@ -9,15 +9,12 @@ def solution(n, s, a, b, fares):
         for j in range(n):
             if i != j and graph[i][j] == 0:
                 graph[i][j] = INF
-    next_nodes = [[None if i == j else j for j in range(n)] for i in range(n)]
-
     # Floyd-Warshall algorithm
     for k in range(n):
         for i in range(n):
             for j in range(n):
                 if graph[i][k] + graph[k][j] < graph[i][j]:
                     graph[i][j] = graph[i][k] + graph[k][j]
-                    next_nodes[i][j] = next_nodes[i][k]
 
     def cost(start, end):
         return graph[start - 1][end - 1]

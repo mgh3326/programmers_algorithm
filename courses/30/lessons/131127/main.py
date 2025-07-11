@@ -12,15 +12,10 @@ def solution(want, number, discount):
         discount_hash = {}
         for value in discount[current_index:size + current_index]:
             discount_hash[value] = discount_hash.get(value, 0) + 1
-        r = False
-        keys = list(want_count_hash.keys())
-        for i in range(len(keys)):
-            key = keys[i]
-            if want_count_hash[key] != discount_hash.get(key, 0):
+        for key, value in want_count_hash.items():
+            if value != discount_hash.get(key, 0):
                 break
-            if i == len(keys) - 1:
-                r = True
-        if r == True:
+        else:
             answer += 1
         current_index += 1
     return answer

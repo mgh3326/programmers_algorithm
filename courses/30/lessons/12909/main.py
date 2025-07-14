@@ -1,17 +1,10 @@
 def solution(s):
-    answer = True
     stack = []
     for value in s:
         if value == "(":
             stack.append(value)
-        elif value == ")":
-            if stack:
-                if stack[-1] == "(":
-                    stack.pop()
-                else:
-                    return False
-            else:
+        else:  # value == ")"
+            if not stack:
                 return False
-    if stack:
-        return False
-    return answer
+            stack.pop()
+    return not stack
